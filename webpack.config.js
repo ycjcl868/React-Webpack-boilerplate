@@ -6,10 +6,7 @@ var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 var htmlWebpackPlugin =  require('html-webpack-plugin');
 
 module.exports = {
-  entry: [
-      'webpack/hot/only-dev-server',
-      "./src/index.js"
-  ],
+  entry: path.resolve(__dirname,"src/index.js"),
   output: {
       path: BUILD_PATH,
       // publicPath: "/build/", 
@@ -17,6 +14,7 @@ module.exports = {
   },
   module: {
       loaders: [  
+          
           {
             test: /\.js$/, 
             exclude: /node_modules/, 
@@ -26,17 +24,24 @@ module.exports = {
                 presets:['react','es2015','stage-2'] // babel配置：添加这三个presets用来处理js和jsx
               }
           }, {
-              test: /\.css$/,
-              loaders: ['style', 'css', 'sass'], //.scss 文件使用 style-loader、css-loader 和 sass-loader 来编译处理
+              test: /\.(css|less)$/,
+              loaders: ['style', 'css', 'less'], //.scss 文件使用 style-loader、css-loader 和 less-loader 来编译处理
               include: APP_PATH
           }, {
               test: /\.(png|jpg)$/,
               loader: 'url?limit=40000'  //图片文件使用 url-loader 来处理，小于40000字节的直接转为base64
-          }
+          },
+          { test: /\.tsx$/, loader: 'ts-loader' },
+          { test: /\.md$/, loader: "raw" },
+          { test: /\.json$/, loader: "json" }
       ]
   },
   resolve:{
-      extensions:['','.js','.json']   //自动扩展文件后缀名，意味着我们require模块可以省略不写后缀名
+      alias:{
+        prismCss: path.resolve(__dirname,'src/prism.css'),
+        prismJs: path.resolve(__dirname,'src/prism.js')
+      },
+      extensions:['','.ts','.tsx','.js','.html','.json']   //自动扩展文件后缀名，意味着我们require模块可以省略不写后缀名
   },
   devServer: {
       contentBase:BUILD_PATH,
@@ -46,7 +51,7 @@ module.exports = {
   },
   plugins: [
     new htmlWebpackPlugin({
-      template: path.resolve(__dirname,'src/index.html'),
+      template: path.join(__dirname,'src/index.html'),
       filename: 'index.html',
       inject:'body'
     }),

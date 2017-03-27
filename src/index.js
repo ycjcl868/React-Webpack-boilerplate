@@ -1,11 +1,26 @@
-import React from 'react';
+import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 
-class App extends React.Component {
+import ReactMarkdown from 'react-markdown';
+import './less/index.less';
+
+import 'prismCss'
+import 'prismJs'
+
+import source from './md/zd1.md';
+
+
+class App extends Component {
     render () {
+      
         return (
           <div>
-          Hello React Kylin
+          Hello React Markdown
+           <ReactMarkdown 
+            unwrapDisallowed 
+            source={source}
+            
+             />,
           </div>
         );
     }
