@@ -37,10 +37,6 @@ module.exports = {
       ]
   },
   resolve:{
-      alias:{
-        prismCss: path.resolve(__dirname,'src/prism.css'),
-        prismJs: path.resolve(__dirname,'src/prism.js')
-      },
       extensions:['','.ts','.tsx','.js','.html','.json']   //自动扩展文件后缀名，意味着我们require模块可以省略不写后缀名
   },
   devServer: {

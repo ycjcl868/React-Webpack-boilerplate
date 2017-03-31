@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import ReactMarkdown from 'react-markdown';
 import './less/index.less';
 
-import 'prismCss'
-import 'prismJs'
+import './prism.css'
+import './prism.js'
 
 import source from './md/zd1.md';
 
