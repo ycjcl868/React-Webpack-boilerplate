@@ -11,11 +11,10 @@ class App extends Component {
           Hello React Markdown
           <h1>DEV Mode: </h1>
           <code>npm dev</code> 
-          
+
           <h1>Production Mode: </h1>
           <code>npm start</code> 
 
-             />,
           </div>
         );
     }
