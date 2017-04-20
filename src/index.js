@@ -1,14 +1,7 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 
-import ReactMarkdown from 'react-markdown';
 import './less/index.less';
-
-import './prism.css'
-import './prism.js'
-
-import source from './md/zd1.md';
-
 
 class App extends Component {
     render () {
@@ -16,10 +9,12 @@ class App extends Component {
         return (
           <div>
           Hello React Markdown
-           <ReactMarkdown 
-            unwrapDisallowed 
-            source={source}
-            
+          <h1>DEV Mode: </h1>
+          <code>npm dev</code> 
+          
+          <h1>Production Mode: </h1>
+          <code>npm start</code> 
+
              />,
           </div>
         );

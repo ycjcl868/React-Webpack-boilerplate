@@ -32,7 +32,6 @@ module.exports = {
               loader: 'url?limit=40000'  //图片文件使用 url-loader 来处理，小于40000字节的直接转为base64
           },
           { test: /\.tsx$/, loader: 'ts-loader' },
-          { test: /\.md$/, loader: "raw" },
           { test: /\.json$/, loader: "json" }
       ]
   },
