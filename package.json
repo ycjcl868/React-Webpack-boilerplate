@@ -18,11 +18,8 @@
   },
   "dependencies": {
     "lodash": "^4.17.4",
-    "prismjs": "^1.6.0",
     "react": "^15.4.2",
-    "react-addons-shallow-compare": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-lowlight": "^1.0.4",
     "react-redux": "^5.0.4",
     "redux": "^3.6.0"
   },
