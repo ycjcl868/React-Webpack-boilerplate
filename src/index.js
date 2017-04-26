@@ -1,16 +1,23 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux'
+import { Provider, connect } from 'react-redux'
 
-import { counter } from './reducer'
-import './less/index.less'
-
+import { counter } from './reducers'
 import Counter from './components/Counter'
-
 
 const store = createStore(counter)
 
+
 class App extends Component {
+    componentDidMount() {
+      store.subscribe(() =>
+        this.forceUpdate()
+      )
+    }
+    componentWillUnMount(){
+      this.unsubscribe();
+    }
     render () {
         return (
           <div>
@@ -28,13 +35,9 @@ class App extends Component {
     }
 }
 
-const render = () => {
-  ReactDOM.render(
-  (
-    <App />
-  ),
-  document.getElementById('app')
-)};
-
-store.subscribe(render)
-render()
+ReactDOM.render(
+(
+  <App />
+),
+document.getElementById('app')
+);
