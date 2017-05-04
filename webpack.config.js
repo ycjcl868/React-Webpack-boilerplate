@@ -6,24 +6,16 @@ var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 var htmlWebpackPlugin =  require('html-webpack-plugin');
 
 module.exports = {
-  entry: path.resolve(__dirname,"src/index.js"),
+  entry: path.resolve(__dirname,"src/index.tsx"),
   output: {
       path: BUILD_PATH,
       // publicPath: "/build/", 
       filename: "bundle.js"
   },
+  devtool: "source-map",
   module: {
       loaders: [  
-          
-          {
-            test: /\.js$/, 
-            exclude: /node_modules/, 
-            loader: "babel-loader", 
-            query:
-              {
-                presets:['react','es2015','stage-2'] // babel配置：添加这三个presets用来处理js和jsx
-              }
-          }, {
+            {
               test: /\.(css|less)$/,
               loaders: ['style', 'css', 'less'], //.scss 文件使用 style-loader、css-loader 和 less-loader 来编译处理
               include: APP_PATH
@@ -31,7 +23,8 @@ module.exports = {
               test: /\.(png|jpg)$/,
               loader: 'url?limit=40000'  //图片文件使用 url-loader 来处理，小于40000字节的直接转为base64
           },
-          { test: /\.tsx$/, loader: 'ts-loader' },
+          { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
+          { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
           { test: /\.json$/, loader: "json" }
       ]
   },
