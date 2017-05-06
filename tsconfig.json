@@ -1,8 +1,9 @@
 {
     "compilerOptions": {
-        "jsx": "react",
-        "target": "es2015",
+        "target": "es3",
         "module": "commonjs",
-        "experimentalDecorators": true
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "declaration": true
     }
 }
