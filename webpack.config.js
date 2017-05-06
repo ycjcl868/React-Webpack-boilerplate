@@ -5,6 +5,7 @@ var APP_PATH = path.resolve(ROOT_PATH, 'src');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 var htmlWebpackPlugin =  require('html-webpack-plugin');
 
+
 module.exports = {
   entry: path.resolve(__dirname,"src/index.tsx"),
   output: {
