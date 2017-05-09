@@ -4,11 +4,11 @@ import { createStore } from 'redux'
 import { Router, Route, browserHistory, Link} from 'react-router'
 import { Provider, connect } from 'react-redux'
 
-import { counter } from './reducers'
+import reducer from './reducers'
 import Counter from './components/Counter'
 import Help from './components/Help'
 
-const store = createStore(counter)
+const store = createStore(reducer)
 
 
 class App extends Component {
@@ -24,7 +24,7 @@ class App extends Component {
         return (
           <div>
             <Counter 
-            value={store.getState()} 
+            value={store.getState().counter} 
             onIncrement={() => 
               store.dispatch({ type: 'INCREMENT' })
             }
