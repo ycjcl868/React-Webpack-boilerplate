@@ -7,7 +7,7 @@ export default class Help extends Component {
   render () {
     return (
       <div>
-        Help Kylin
+        Hello React
         <Link to='/'>Home</Link>
       </div>
     )
