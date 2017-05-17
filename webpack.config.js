@@ -23,10 +23,12 @@ module.exports = {
               {
                 presets:['react','es2015','stage-2'] // babel配置：添加这三个presets用来处理js和jsx
               }
-          }, {
+          },  { 
+              test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/, 
+              loader: 'url-loader?limit=100000' 
+            },{
               test: /\.(css|less)$/,
-              loaders: ['style', 'css', 'less'], //.scss 文件使用 style-loader、css-loader 和 less-loader 来编译处理
-              include: APP_PATH
+               loader: 'style!css!less' //.scss 文件使用 style-loader、css-loader 和 less-loader 来编译处理
           }, {
               test: /\.(png|jpg)$/,
               loader: 'url?limit=40000'  //图片文件使用 url-loader 来处理，小于40000字节的直接转为base64
