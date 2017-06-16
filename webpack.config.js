@@ -55,6 +55,11 @@ module.exports = {
       inject:'body'
     }),
     new webpack.NoErrorsPlugin(),//用来跳过编译时出错的代码并记录，使编译后运行时的包不会发生错误
-    new webpack.HotModuleReplacementPlugin()//全局开启代码热替换
+    new webpack.HotModuleReplacementPlugin(), //全局开启代码热替换
+    new webpack.DefinePlugin({
+        "process.env": { 
+            NODE_ENV: JSON.stringify("production") 
+        }
+    })
   ]
 };
