@@ -6,7 +6,11 @@ var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 var htmlWebpackPlugin =  require('html-webpack-plugin');
 
 module.exports = {
-  entry: path.resolve(__dirname,"src/index.js"),
+  entry: [
+      "webpack-dev-server/client?http://127.0.0.1:8899",
+      "webpack/hot/only-dev-server",
+      path.resolve(__dirname,"src/index.js")
+    ],
   output: {
       path: BUILD_PATH,
       // publicPath: "/build/", 
@@ -14,15 +18,10 @@ module.exports = {
   },
   module: {
       loaders: [  
-          
           {
             test: /\.js$/, 
-            exclude: /node_modules/, 
-            loader: "babel-loader", 
-            query:
-              {
-                presets:['react','es2015','stage-2'] // babel配置：添加这三个presets用来处理js和jsx
-              }
+            loader: "react-hot-loader!babel-loader", 
+            exclude: /node_modules/
           },  { 
               test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/, 
               loader: 'url-loader?limit=100000' 
