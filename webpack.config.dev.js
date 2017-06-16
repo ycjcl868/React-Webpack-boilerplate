@@ -7,6 +7,8 @@ var htmlWebpackPlugin =  require('html-webpack-plugin');
 
 module.exports = {
   entry: [
+      "webpack-dev-server/client?http://127.0.0.1:8899",
+      "webpack/hot/only-dev-server",
       path.resolve(__dirname,"src/index.js")
     ],
   output: {
@@ -40,6 +42,12 @@ module.exports = {
   resolve:{
       extensions:['','.ts','.tsx','.js','.html','.json']   //自动扩展文件后缀名，意味着我们require模块可以省略不写后缀名
   },
+  devServer: {
+      contentBase:BUILD_PATH,
+      hot: true,  //热加载模式
+      port: 8899,
+      inline: true //inline模式(将webpack-dev-sever的客户端入口添加到包(bundle)中)
+  },
   plugins: [
     new htmlWebpackPlugin({
       template: path.join(__dirname,'src/index.html'),
@@ -47,6 +55,7 @@ module.exports = {
       inject:'body'
     }),
     new webpack.NoErrorsPlugin(),//用来跳过编译时出错的代码并记录，使编译后运行时的包不会发生错误
+    new webpack.HotModuleReplacementPlugin(), //全局开启代码热替换
     new webpack.DefinePlugin({
         "process.env": { 
             NODE_ENV: JSON.stringify("production") 

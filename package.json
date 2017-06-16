@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --hot --open --colors --inline",
+    "dev": "webpack-dev-server --hot --open --colors --inline --config webpack.config.dev.js",
     "build": "webpack --optimize-minimize -p --colors"
   },
   "repository": {
